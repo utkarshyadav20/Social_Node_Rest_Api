@@ -25,22 +25,22 @@ mongoose
     console.log(err);
   });
 
-app.use("/images",express.static(path.join(__dirname,"public/images")))
-
-// middleware
-app.use(express.json());
-app.use(helmet());
-app.use(morgan("common"));
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "public/images");
-  },
-  filename: (req, file, cb) => {
-    cb(null,req.body.name);
-  },
-});
-
+  
+  // middleware
+  app.use(express.json());
+  app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
+  app.use(morgan("common"));
+  
+  const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, "public/images");
+    },
+    filename: (req, file, cb) => {
+      cb(null,req.body.name);
+    },
+  });
+  
+  app.use("/images",express.static(path.join(__dirname,"public/images")))
 const upload = multer({storage});
 
 app.post("/api/upload", upload.single("file"), (req, res) => {
