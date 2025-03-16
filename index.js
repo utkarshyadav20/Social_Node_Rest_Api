@@ -11,7 +11,12 @@ const path=require("path");
 
 
 const app = express();
-
+// const cors=require("cors");
+// app.use(cors({
+//   origin:"https://social-node-rest-api.vercel.app",
+//   methods:["POST","GET"],
+//   credentials:true
+// }));
 dotenv.config();
 
 mongoose
@@ -52,7 +57,9 @@ app.use(morgan("common"));
 // });
 
 
-
+app.get("/",(req,res)=>{
+    res.json("hello");
+})
 app.use("/api/users", userRoute);
 app.use("/api/auth", userAuth);
 app.use("/api/posts", postRoute);
