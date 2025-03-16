@@ -11,11 +11,16 @@ const path=require("path");
 
 
 const app = express();
-
+// const cors=require("cors");
+// app.use(cors({
+//   origin:"https://social-node-rest-api.vercel.app",
+//   methods:["POST","GET"],
+//   credentials:true
+// }));
 dotenv.config();
 
 mongoose
-  .connect('mongodb+srv://utkarsh2002:A8075CEA@cluster0.wr9vb0t.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+  .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
