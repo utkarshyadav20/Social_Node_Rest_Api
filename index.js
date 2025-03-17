@@ -6,7 +6,7 @@ const morgan = require("morgan");
 const userRoute = require("./routes/users");
 const userAuth = require("./routes/auth");
 const postRoute = require("./routes/posts");
-const multer = require("multer");
+// const multer = require("multer");
 const path=require("path");
 
 
