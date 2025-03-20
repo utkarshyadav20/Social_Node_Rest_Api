@@ -11,12 +11,9 @@ const path=require("path");
 
 
 const app = express();
-// const cors=require("cors");
-// app.use(cors({
-//   origin:"https://social-node-rest-api.vercel.app",
-//   methods:["POST","GET"],
-//   credentials:true
-// }));
+const cors = require("cors");
+app.use(cors({ origin: "https://social-app-lilac-five.vercel.app", credentials: true }));
+
 dotenv.config();
 
 mongoose
