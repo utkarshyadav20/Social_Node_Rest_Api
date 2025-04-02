@@ -15,6 +15,7 @@ const cors = require("cors");
 const allowedOrigins = [
   "http://localhost:3000", // Local dev
   "https://social-app-lilac-five.vercel.app", // Deployed frontend
+  "https://master.d1c7vn6uncbq8z.amplifyapp.com",
 ];
 
 app.use(
