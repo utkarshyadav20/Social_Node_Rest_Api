@@ -12,8 +12,23 @@ const path=require("path");
 
 const app = express();
 const cors = require("cors");
-app.use(cors({ origin: "https://social-app-lilac-five.vercel.app", credentials: true }));
+const allowedOrigins = [
+  "http://localhost:3000", // Local dev
+  "https://social-app-lilac-five.vercel.app", // Deployed frontend
+];
 
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true, // Allow cookies if needed
+  })
+);
 dotenv.config();
 
 mongoose
